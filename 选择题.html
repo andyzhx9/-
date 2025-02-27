@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listening Comprehension</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .audio-control {
+            cursor: pointer;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            margin-top: 0;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listening Comprehension</h1>
+
+    <!-- Audio Control -->
+    <div class="audio-control" onclick="playAudio()">🔊 Click to play the audio</div>
+
+    <!-- Audio Element -->
+    <audio id="audio" src="https://translate.google.com/translate_tts?ie=UTF-8&q=Today%20was%20a%20big%20day.%20The%20town%20festival%20was%20getting%20mobbed%20by%20visitors.%20For%20me%2C%20it%20was%20special%20for%20another%20reason.%20I%20was%20in%20the%20middle%20of%20giving%20a%20pep%20talk%20to%20my%20team%20before%20the%20reopening%20of%20our%20family%20restaurant.%20My%20dad%20always%20said%2C%20%27This%20day%20makes%20or%20breaks%20us.%27%20I%20told%20everyone%2C%20%27Go%20ahead.%20You%20know%20where%20you%27re%20supposed%20to%20be.%27%20Then%2C%20my%20little%20brother%20ran%20in%20and%20said%2C%20%27The%20grill%20is%20itchy%2C%20and%20I%20think%20I%20farted%20near%20the%20kitchen!%27%20I%20asked%20him%20to%20go%20downstairs%20and%20check%20the%20supplies.%20The%20grind%20of%20preparing%20for%20the%20festival%20was%20exhausting%2C%20but%20I%20knew%20we%20were%20on%20the%20path%20to%20success.%20When%20the%20clock%20struck%20noon%2C%20I%20shouted%2C%20%27We%27re%20gone!%20Let%27s%20make%20this%20the%20best%20festival%20ever!%27&tl=en&client=tw-ob" type="audio/mpeg"></audio>
+
+    <!-- Questions -->
+    <div class="question">
+        <h3>1. Why was the day special for the narrator?</h3>
+        <p>A) It was a national holiday.</p>
+        <p>B) The town's festival was happening.</p>
+        <p>C) Their family restaurant was reopening.</p>
+        <p>D) They were visiting another country.</p>
+        <button onclick="checkAnswer(1, 'C')">Submit</button>
+        <div class="feedback" id="feedback1"></div>
+    </div>
+
+    <div class="question">
+        <h3>2. What does the phrase "makes or breaks us" mean in the story?</h3>
+        <p>A) It was a day for relaxation.</p>
+        <p>B) It was a day that could determine their success or failure.</p>
+        <p>C) It was a day for family gatherings.</p>
+        <p>D) It was a day for cooking experiments.</p>
+        <button onclick="checkAnswer(2, 'B')">Submit</button>
+        <div class="feedback" id="feedback2"></div>
+    </div>
+
+    <div class="question">
+        <h3>3. What did the narrator's little brother say about the grill?</h3>
+        <p>A) It was broken.</p>
+        <p>B) It was itchy.</p>
+        <p>C) It was too hot.</p>
+        <p>D) It was missing.</p>
+        <button onclick="checkAnswer(3, 'B')">Submit</button>
+        <div class="feedback" id="feedback3"></div>
+    </div>
+
+    <div class="question">
+        <h3>4. What did the narrator feel when the crowd cheered?</h3>
+        <p>A) Anger.</p>
+        <p>B) Pride.</p>
+        <p>C) Sadness.</p>
+        <p>D) Confusion.</p>
+        <button onclick="checkAnswer(4, 'B')">Submit</button>
+        <div class="feedback" id="feedback4"></div>
+    </div>
+
+    <div class="question">
+        <h3>5. What does the phrase "on the path to success" suggest?</h3>
+        <p>A) They were lost.</p>
+        <p>B) They were about to fail.</p>
+        <p>C) They were moving towards success.</p>
+        <p>D) They were giving up.</p>
+        <button onclick="checkAnswer(5, 'C')">Submit</button>
+        <div class="feedback" id="feedback5"></div>
+    </div>
+
+    <script>
+        // Play audio function
+        function playAudio() {
+            const audio = document.getElementById('audio');
+            audio.play();
+        }
+
+        // Check answer function
+        function checkAnswer(questionNumber, correctAnswer) {
+            const userAnswer = prompt(`Enter your answer for question ${questionNumber} (A, B, C, or D):`).toUpperCase();
+            const feedback = document.getElementById(`feedback${questionNumber}`);
+
+            if (userAnswer === correctAnswer) {
+                feedback.innerHTML = `<span class="correct">Correct!</span> The correct answer is ${correctAnswer}.`;
+            } else {
+                feedback.innerHTML = `<span class="incorrect">Incorrect.</span> The correct answer is ${correctAnswer}.`;
+            }
+
+            // Explanation
+            switch (questionNumber) {
+                case 1:
+                    feedback.innerHTML += "<br>Explanation: The narrator's family restaurant was reopening, making the day special.";
+                    break;
+                case 2:
+                    feedback.innerHTML += "<br>Explanation: The phrase means the day could determine their success or failure.";
+                    break;
+                case 3:
+                    feedback.innerHTML += "<br>Explanation: The narrator's brother said the grill was itchy.";
+                    break;
+                case 4:
+                    feedback.innerHTML += "<br>Explanation: The narrator felt pride when the crowd cheered.";
+                    break;
+                case 5:
+                    feedback.innerHTML += "<br>Explanation: The phrase suggests they were moving towards success.";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
